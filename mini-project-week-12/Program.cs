@@ -38,7 +38,7 @@
 
             Console.WriteLine("\nLista för alla produkter:");
             Console.WriteLine(" "); // Tom rad för att skapa en tom rad i konsolen
-            Console.ForegroundColor = ConsoleColor.Green;
+            Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine($"{"Kategori",-20} {"Produktnamn",-30} {"Pris",-10}");
             Console.ResetColor();
             Console.WriteLine(new string('-', 60));
@@ -50,7 +50,7 @@
 
             // skriv ut total summa för alla produkter med grandTotalSum
             Console.WriteLine(new string('-', 60));
-            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine($"\nTotal summa för alla produkter: {grandTotalSum:F0}kr");
             Console.ResetColor();
             Console.WriteLine("-----------------------------------");
@@ -72,7 +72,7 @@
             if (response.ToLower() != "j") break;
         }
         // skriv ut att programmet avslutas
-        Console.ForegroundColor = ConsoleColor.Yellow; 
+        Console.ForegroundColor = ConsoleColor.Cyan; 
         Console.WriteLine("Tack för att du testade programmet!");
         Console.ReadKey();
     }
@@ -83,7 +83,7 @@
         {
             // infotext
             Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("Skriv in en produkt eller skriv 'q' för att avsluta.");
+            Console.WriteLine("Skriv in en produkt genom följande steg | skriv 'Q' för att avsluta och visa listan.");
             Console.ResetColor();
 
             // fråga efter kategori genom att skriva in kategori
@@ -142,7 +142,7 @@
 
             // skriv ut att produkten har lagts till korrekt
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("Produkten har lagts till korrekt.");
+            Console.WriteLine("Produkten har lagts till korrekt i listan.");
             Console.ResetColor();
         }
     }
