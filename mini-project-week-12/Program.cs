@@ -67,7 +67,7 @@
             AddProducts(productList);
             productList.DisplayProducts();
 
-            Console.WriteLine("Vill du lägga till fler produkter? (j/n)");
+            Console.WriteLine("Vill du lägga till fler produkter? (j/n)"); //medelande för att lägga till fler produkter
             string response = Console.ReadLine();
             if (response.ToLower() != "j") break;
         }
