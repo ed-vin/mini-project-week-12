@@ -14,10 +14,10 @@
             Price = price;
         }
 
-        // överskriv ToString-metoden för att skriva ut informationen om produkten
+        // override ToString-metoden för att skriva ut informationen om produkten
         public override string ToString()
         {
-            return $"Kategori: {Category}, Produktnamn: {ProductName}, Pris: {Price:F0}";
+            return $"Kategori: {Category}, Produktnamn: {ProductName}, Pris: {Price:F0}"; // skriv ut kategori, produktnamn och pris
         }
     }
 
@@ -33,15 +33,15 @@
 
         public void DisplayProducts() // skriv ut alla produkter i listan
         {
-            var sortedProducts = products.OrderBy(p => p.Price).ToList();
-            decimal grandTotalSum = sortedProducts.Sum(p => p.Price);
+            var sortedProducts = products.OrderBy(p => p.Price).ToList(); // sortera produkterna efter pris
+            decimal grandTotalSum = sortedProducts.Sum(p => p.Price); // räkna ut total summa för alla produkter
 
             Console.WriteLine("\nLista för alla produkter:");
-            Console.WriteLine(" "); // Tom rad för att skapa en tom rad i konsolen
+            Console.WriteLine(" "); // Tom rad för att skapa en tom rad i konsolen (finns förmodligen en bättre lösning)
             Console.ForegroundColor = ConsoleColor.Blue;
-            Console.WriteLine($"{"Kategori",-20} {"Produktnamn",-30} {"Pris",-10}");
+            Console.WriteLine($"{"Kategori",-20} {"Produktnamn",-30} {"Pris",-10}"); //skriv ut kategorin, produktnamn och pris med viss bredd
             Console.ResetColor();
-            Console.WriteLine(new string('-', 60));
+            Console.WriteLine(new string('-', 60)); // skriv ut en rad med streck
 
             foreach (var product in sortedProducts) // loopa igenom alla produkter och skriv ut informationen
             {
@@ -57,7 +57,7 @@
         }
     }
 
-    static void Main(string[] args) // huvudmetoden
+    static void Main(string[] args) // huvudmetoden för programmet
     {
         // skapa en ny instans av ProductList
         ProductList productList = new ProductList();
@@ -77,10 +77,11 @@
         Console.ReadKey();
     }
 
-    static void AddProducts(ProductList productList) // metoden för att lägga till produkter
+    static void AddProducts(ProductList productList) // metoden för att lägga till produkter i listan
     {
         while (true)
         {
+            Console.WriteLine("-----------------------------------");
             // infotext
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("Skriv in en produkt genom följande steg | skriv 'Q' för att avsluta och visa listan.");
@@ -107,7 +108,7 @@
             {
                 Console.Write("Produktnamn: ");
                 productName = Console.ReadLine();
-                if (productName.ToLower() == "q") return;
+                if (productName.ToLower() == "q") return; // om användaren skriver 'q', bryt loopen
                 if (!string.IsNullOrWhiteSpace(productName)) break; // om produktnamnet inte är tomt, bryt loopen
 
                 Console.ForegroundColor = ConsoleColor.Red;
@@ -116,14 +117,14 @@
             }
 
             // fråga efter priset
-            decimal price = 0; // sätt priset till 0
+            decimal price = 0; // sätt priset till 0 som standard
             while (true) // loopa tills användaren skriver in ett pris
             {
                 Console.Write("Pris: ");
                 string priceInput = Console.ReadLine();
                 if (priceInput.ToLower() == "q") return;
 
-                if (decimal.TryParse(priceInput, out price))
+                if (decimal.TryParse(priceInput, out price)) // försök att konvertera priset till en siffra
                 {
                     break; // om priset är en siffra, bryt loopen
                 }
